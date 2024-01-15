@@ -19,4 +19,17 @@ router.post('/add',async(request,response)=>{
 });
 
 
+router.get('/',async(request,response)=>{
+   try{
+      const users=await user.find();
+      console.log("Users:",users);
+      response.status(200).json(users);   
+   }
+   catch(e)
+   {
+      console.log("Error:",e);
+      response.status(400).json({"error":e.message});
+   }
+});
+
 export default router;
